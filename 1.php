@@ -6,7 +6,7 @@ include_once('simple_html_dom.php');
 
 error_reporting(E_ERROR);
 
-$f = file_get_html('http://brw-shop.by/catalog/');
+$f = file_get_html(''); //for example http://brw-shop.by/catalog/
 
 $main_categories_link = $main_categories_name = $main_categories_pages = $goods_link = $goods_name  = array();
 
@@ -53,7 +53,7 @@ $i=0; //category number
 
 	 			$f_good = file_get_html($good_link);
 	 			mkdir('/catalog/'.$main_categories_name[$i].'/'.$k);
-	 			$file_good = fopen('/catalog/'.$main_categories_name[$i].'/'.$k.'/îïèñàíèå.txt', 'wt+');
+	 			$file_good = fopen('/catalog/'.$main_categories_name[$i].'/'.$k.'/Ã®Ã¯Ã¨Ã±Ã Ã­Ã¨Ã¥.txt', 'wt+');
 	 			fwrite($file_good, $good_link."\r\n\r\n");
 	 			fwrite($file_good, $good_name."\r\n\r\n");
 
@@ -71,15 +71,15 @@ $i=0; //category number
 	 			$color = $f_good->find('span.color-pick__box__cont__text');
 	 			$color_text = reset($color);
 	 			$field_string = iconv('UTF-8', 'Windows-1251', $color_text->plaintext);  
-	 			fwrite($file_good, 'Öâåò:    '.$field_string."\r\n");
+	 			fwrite($file_good, 'Ã–Ã¢Ã¥Ã²:    '.$field_string."\r\n");
 
 
 	 			$price = $f_good->find('div.ready-made-solution-box__data__price-box__price span');
 	 			$price_text = reset($price);
 	 			$field_string = iconv('UTF-8', 'Windows-1251', $price_text->plaintext);  
-	 			$field_string = str_replace (" ðóá.", "", $field_string);
+	 			$field_string = str_replace (" Ã°Ã³Ã¡.", "", $field_string);
 	 			$field_string = str_replace (".", " ", $field_string);
-	 			fwrite($file_good, 'Öåíà:  '.$field_string."\r\n\r\n\r\n");
+	 			fwrite($file_good, 'Ã–Ã¥Ã­Ã :  '.$field_string."\r\n\r\n\r\n");
 
 	 			foreach($f_good->find('div ul li span') as $field) {
 	 				$field_string = iconv('UTF-8', 'Windows-1251', $field->plaintext);

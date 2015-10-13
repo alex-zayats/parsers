@@ -6,7 +6,7 @@ include_once('simple_html_dom.php');
 
 error_reporting(E_ERROR);
 
-$f = file_get_html('http://brw-shop.by/catalog/');
+$f = file_get_html(''); //for example http://brw-shop.by/catalog/
 
 $main_categories_link = $main_categories_name = $main_categories_pages = $goods_link = $goods_name  = array();
 
